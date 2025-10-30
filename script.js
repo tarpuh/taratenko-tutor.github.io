@@ -29,9 +29,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Простая обработка формы (для реального использования нужна интеграция с сервером)
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Спасибо! Ваша заявка отправлена. Я свяжусь с вами в ближайшее время.');
-    this.reset();
-});
