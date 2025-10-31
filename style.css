@@ -198,67 +198,149 @@ h2::after {
 }
 
 /* Обо мне */
-.about {
-    background: var(--bg-dark);
+/* Стили для обновленного блока "Обо мне" */
+.about-story {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    background: rgba(58, 134, 255, 0.03);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+}
+
+.about-story h3 {
+    color: var(--text-primary);
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.about-story p {
+    color: var(--text-secondary);
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+.about-story strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.intro {
+    font-size: 1.3rem;
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    margin-bottom: 2.5rem !important;
+    line-height: 1.6;
+    text-align: center;
+    border-left: 3px solid var(--accent);
+    padding-left: 1.5rem;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.exp-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.exp-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.exp-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.exp-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.3;
 }
 
 .about-content {
     display: flex;
-    align-items: center;
-    gap: 4rem;
+    align-items: flex-start; /* Вернем выравнивание по верху */
+    gap: 3rem;
 }
 
 .about-photo {
-    width: 320px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 280px; /* Компактный размер как было */
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     border: 2px solid var(--border);
+    flex-shrink: 0; /* Чтобы фото не сжималось */
 }
 
 .about-text {
     flex: 1;
 }
 
-.about-text p {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    line-height: 1.8;
+/* Убираем центрирование для десктопной версии */
+@media (min-width: 769px) {
+    .about-content {
+        text-align: left; /* Текст слева */
+    }
+    
+    .intro {
+        text-align: left; /* Вступление тоже слева */
+    }
 }
 
-.about-text ul {
-    list-style: none;
-    margin: 2rem 0;
-}
-
-.about-text li {
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
-    padding-left: 2rem;
-    position: relative;
-}
-
-.about-text li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--success);
-    font-weight: bold;
-}
-
-.result-box {
-    background: linear-gradient(135deg, rgba(58, 134, 255, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
-    padding: 2rem;
-    border-radius: 10px;
-    border-left: 4px solid var(--accent);
-    margin-top: 2rem;
-    border: 1px solid var(--border);
-}
-
-.result-box p {
-    color: var(--text-primary) !important;
-    margin: 0;
-    font-weight: 500;
+/* Для мобильных оставляем центрирование */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .about-photo {
+        width: 250px;
+        margin: 0 auto; /* Центрируем только на мобильных */
+    }
+    
+    .intro {
+        text-align: center; /* На мобильных центрируем */
+    }
 }
 
 /* Услуги */
@@ -578,5 +660,148 @@ footer {
     
     h2 {
         font-size: 2.2rem;
+    }
+}
+.price-banner {
+    background: linear-gradient(135deg, 
+        rgba(58, 134, 255, 0.05) 0%, 
+        rgba(16, 185, 129, 0.05) 50%, 
+        rgba(58, 134, 255, 0.05) 100%);
+    padding: 3rem 0;
+    margin: 4rem 0;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.price-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(58, 134, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.price-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--accent) 50%, 
+        transparent 100%);
+}
+
+.banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.banner-badge {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.banner-text h3 {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.banner-price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0.5rem 0;
+    line-height: 1;
+}
+
+.price-period {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-left: 0.3rem;
+}
+
+.banner-text p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.banner-text strong {
+    color: var(--success);
+    font-weight: 600;
+}
+
+.banner-cta {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(58, 134, 255, 0.2);
+    border: 1px solid rgba(58, 134, 255, 0.3);
+}
+
+.banner-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(58, 134, 255, 0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .price-banner {
+        padding: 2.5rem 0;
+        margin: 3rem 0;
+    }
+    
+    .banner-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .banner-price {
+        font-size: 2.2rem;
+    }
+    
+    .banner-cta {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
